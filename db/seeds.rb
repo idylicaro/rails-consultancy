@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Client.create(name:"guest1")
+Client.create(name:"guest2")
+Client.create(name:"guest3")
