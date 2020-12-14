@@ -18,6 +18,6 @@ class ClientController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:name)
+    params.permit(:name)
   end
 end
