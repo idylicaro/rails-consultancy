@@ -1,3 +1,4 @@
+require 'faker'
 # == Schema Information
 #
 # Table name: clients
@@ -9,6 +10,6 @@
 #
 FactoryBot.define do
   factory :client do
-    name { "MyString" }
+    name { Faker::Name.name }
   end
 end
