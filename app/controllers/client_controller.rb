@@ -15,6 +15,13 @@ class ClientController < ApplicationController
 
   end
 
+  def destroy
+    Client.find(params[:id]).destroy!
+
+    head :ok  # obs: aqui tem o rescue que ta la no application_controller
+  end
+
+
   private
 
   def client_params

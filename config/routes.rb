@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   # POST   /items        #=> create
   # DELETE /items/1      #=> destroy
 
-  resources :client, only:[:index, :create]
+  resources :client, only:[:index, :create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
