@@ -20,15 +20,16 @@ RSpec.describe "Clients", type: :request do
   describe "POST /" do
     it "returns http created" do
       stub_name = Faker::name
-      # Todo: use factory
       post "/client/", params: {name:stub_name}
-      expect(response).to have_http_status(:created)
+        expect(response).to have_http_status(:created)
       end
-    it "returns http created" do
+    it "return a client created" do
       stub_name = Faker::name
       # Todo: use factory
       post "/client/", params: {name:stub_name}
+      json_response = JSON.parse(response.body)
       expect(response).to have_http_status(:created)
+      expect(json_response['name']).to eq(stub_name)
     end
   end
 
