@@ -46,7 +46,22 @@ RSpec.describe "Clients", type: :request do
 
       expect(response).to have_http_status(:ok)
     end
-    
+
+  end
+
+  describe "PUT/client/:id" do
+    let!(:client) { FactoryBot.create(:client) }
+
+    it "update a client and return http ok" do
+      name_for_update = 'fakeNameRandom'
+      put "/client/#{client.id}", params: {name:name_for_update}
+
+
+      json_response = JSON.parse(response.body)
+      expect(json_response['name']).to eq(name_for_update)
+      expect(Client.count).to eq(1)
+      expect(response).to have_http_status(:ok)
+    end
   end
 
 end
