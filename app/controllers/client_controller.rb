@@ -21,6 +21,14 @@ class ClientController < ApplicationController
     head :ok  # obs: aqui tem o rescue que ta la no application_controller
   end
 
+  def update
+    client = Client.find(params[:id])
+    if client.update(client_params)
+      render json: client, status: :ok
+    else
+      render json: client.errors, status: :unprocessable_entity
+    end
+  end
 
   private
 
