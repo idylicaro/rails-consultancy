@@ -16,6 +16,12 @@ class ConsultantController < ApplicationController
 
   end
 
+  def destroy
+    Consultant.find(params[:id]).destroy!
+
+    head :ok  # obs: aqui tem o rescue que ta la no application_controller
+  end
+
   private
 
   def consultant_params
