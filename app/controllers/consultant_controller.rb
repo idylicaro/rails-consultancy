@@ -22,6 +22,15 @@ class ConsultantController < ApplicationController
     head :ok  # obs: aqui tem o rescue que ta la no application_controller
   end
 
+  def update
+    consultant = Consultant.find(params[:id])
+    if consultant.update(consultant_params)
+      render json: consultant, status: :ok
+    else
+      render json: consultant.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def consultant_params
