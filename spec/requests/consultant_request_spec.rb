@@ -36,4 +36,17 @@ RSpec.describe "Consultants", type: :request do
     end
   end
 
+  describe "DELETE /consultant/:id" do
+    let!(:consultant) { FactoryBot.create(:consultant) }
+
+    it "delete a client and return http ok" do
+      expect{
+        delete "/consultant/#{consultant.id}"
+      }.to change { Consultant.count }.from(1).to(0)
+
+      expect(response).to have_http_status(:ok)
+    end
+
+  end
+
 end
