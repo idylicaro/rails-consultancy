@@ -49,4 +49,19 @@ RSpec.describe "Consultants", type: :request do
 
   end
 
+  describe "PUT/consultant/:id" do
+    let!(:consultant) { FactoryBot.create(:consultant) }
+
+    it "update a consultant and return http ok" do
+      name_for_update = 'fakeNameRandom'
+      put "/consultant/#{consultant.id}", params: {name:name_for_update}
+
+
+      json_response = JSON.parse(response.body)
+      expect(json_response['name']).to eq(name_for_update)
+      expect(Consultant.count).to eq(1)
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
 end
