@@ -20,4 +20,20 @@ RSpec.describe "Consultants", type: :request do
     end
   end
 
+  describe "POST /consultant" do
+    it "returns http created" do
+      stub_name = Faker::name
+      post "/consultant/", params: {name:stub_name}
+      expect(response).to have_http_status(:created)
+    end
+    it "return a consultant created" do
+      stub_name = Faker::name
+      expect{
+        post "/consultant/", params: {name:stub_name}
+      }.to change { Consultant.count }.from(0).to(1)
+
+      expect(response).to have_http_status(:created)
+    end
+  end
+
 end
