@@ -12,6 +12,6 @@ require 'faker'
 FactoryBot.define do
   factory :consultant do
     name { Faker::Name.name }
-    rating { 1 }
+    rating { 0 }
   end
 end
