@@ -10,6 +10,8 @@ class ConsultancyController < ApplicationController
     consultancy = Consultancy.new(client:client,consultant:consultant)
     consultancy.rating = 0;  #todo: remove for ConsultancyRepository
 
+    #Todo: add add current datatime in start start_date
+
     if consultancy.save
       render json: consultancy, status: :created
     else
@@ -23,4 +25,8 @@ class ConsultancyController < ApplicationController
 
     head :ok  # obs: aqui tem o rescue que ta la no application_controller
   end
+
+  #todo: create close Consultancy action
+  # - [] calculate rating
+  # - [] add end_date
 end
