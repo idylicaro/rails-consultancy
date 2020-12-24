@@ -13,7 +13,7 @@ RSpec.describe "Consultancies", type: :request do
       get "/consultancy/"
     end
 
-    it "returns all consultants" do
+    it "returns all consultancies" do
       expect(response).to have_http_status(:ok)
       expect(JSON.parse(response.body).size).to eq(2)
     end
@@ -24,4 +24,16 @@ RSpec.describe "Consultancies", type: :request do
     end
   end
 
+  describe "POST /consultancy" do
+    
+    it "return a consultancy created" do
+      client = FactoryBot.create(:client)
+      consultant = FactoryBot.create(:consultant)
+      expect{
+        post "/consultancy/", params: {client_id:client.id,consultant_id:consultant.id}
+      }.to change { Consultancy.count }.from(0).to(1)
+
+      expect(response).to have_http_status(:created)
+    end
+  end
 end
