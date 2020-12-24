@@ -25,10 +25,10 @@ RSpec.describe "Consultancies", type: :request do
   end
 
   describe "POST /consultancy" do
+    let!(:client) { FactoryBot.create(:client) }
+    let!(:consultant) { FactoryBot.create(:consultant) }
     
     it "return a consultancy created" do
-      client = FactoryBot.create(:client)
-      consultant = FactoryBot.create(:consultant)
       expect{
         post "/consultancy/", params: {client_id:client.id,consultant_id:consultant.id}
       }.to change { Consultancy.count }.from(0).to(1)
