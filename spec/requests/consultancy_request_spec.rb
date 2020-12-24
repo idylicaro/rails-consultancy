@@ -27,7 +27,7 @@ RSpec.describe "Consultancies", type: :request do
   describe "POST /consultancy" do
     let!(:client) { FactoryBot.create(:client) }
     let!(:consultant) { FactoryBot.create(:consultant) }
-    
+
     it "return a consultancy created" do
       expect{
         post "/consultancy/", params: {client_id:client.id,consultant_id:consultant.id}
@@ -35,5 +35,20 @@ RSpec.describe "Consultancies", type: :request do
 
       expect(response).to have_http_status(:created)
     end
+  end
+
+  describe "DELETE /consultant/:id" do
+    let!(:client) { FactoryBot.create(:client) }
+    let!(:consultant) { FactoryBot.create(:consultant) }
+
+    it "delete a client and return http ok" do
+      consultancy = Consultancy.create(client:client, consultant:consultant,rating:0)
+      expect{
+        delete "/consultancy/#{consultancy.id}"
+      }.to change { Consultancy.count }.from(1).to(0)
+
+      expect(response).to have_http_status(:ok)
+    end
+
   end
 end
