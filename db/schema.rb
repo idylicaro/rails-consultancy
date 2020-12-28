@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 2020_12_12_040651) do
   create_table "consultancies", force: :cascade do |t|
     t.integer "client_id"
     t.integer "consultant_id"
-    t.datetime "start_date"
     t.datetime "end_date"
     t.integer "rating"
+    t.boolean "closed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
