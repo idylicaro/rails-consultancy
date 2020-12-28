@@ -22,11 +22,21 @@ class ConsultancyController < ApplicationController
 
   def destroy
     Consultancy.find(params[:id]).destroy!
-
     head :ok  # obs: aqui tem o rescue que ta la no application_controller
+  end
+
+  def close
+    consultancy = Consultancy.find(params[:id])
+    consultancy.end_date = DateTime.current
+    consultancy.rating = params[:rating]
+    consultancy.closed = true
+    if consultancy.save
+      render json: consultancy, status: :ok
+    else
+      render json: consultancy.errors, status: :unprocessable_entity
+    end
   end
 
   #todo: create close Consultancy action
   # - [] calculate rating
-  # - [] add end_date
 end
