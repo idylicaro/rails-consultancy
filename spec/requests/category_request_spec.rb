@@ -32,4 +32,17 @@ RSpec.describe "Categories", type: :request do
     end
   end
 
+  describe "DELETE /category/:id" do
+    let!(:category) { FactoryBot.create(:category) }
+
+    it "delete a category and return http ok" do
+      expect{
+        delete "/category/#{category.id}"
+      }.to change { Category.count }.from(1).to(0)
+
+      expect(response).to have_http_status(:ok)
+    end
+
+  end
+
 end
