@@ -20,4 +20,16 @@ RSpec.describe "Categories", type: :request do
     end
   end
 
+  describe "POST /category" do
+
+    it "return a category created" do
+      stub_name = Faker::name
+      expect{
+        post "/category/", params: {name:stub_name}
+      }.to change { Category.count }.from(0).to(1)
+
+      expect(response).to have_http_status(:created)
+    end
+  end
+
 end
