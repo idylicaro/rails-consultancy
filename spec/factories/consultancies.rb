@@ -3,9 +3,9 @@
 # Table name: consultancies
 #
 #  id            :integer          not null, primary key
-#  closed        :boolean
 #  end_date      :datetime
 #  rating        :integer
+#  start_date    :datetime
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  client_id     :integer
