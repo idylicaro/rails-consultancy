@@ -45,4 +45,18 @@ RSpec.describe "Categories", type: :request do
 
   end
 
+  describe "PUT/category/:id" do
+    let!(:category) { FactoryBot.create(:category) }
+
+    it "update a category and return http ok" do
+      name_for_update = 'fakeNameRandom'
+      put "/category/#{category.id}", params: {name:name_for_update}
+
+      json_response = JSON.parse(response.body)
+      expect(json_response['name']).to eq(name_for_update)
+      expect(Category.count).to eq(1)
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
 end
