@@ -10,5 +10,9 @@
 class Client < ApplicationRecord
   has_many :consultancies
   has_many :consultants, through: :consultancies
+
+  belongs_to :category
+
   validates :name, presence: true
+  validates_presence_of :category_id
 end
