@@ -14,6 +14,12 @@ class CategoryController < ApplicationController
 
   end
 
+  def destroy
+    Category.find(params[:id]).destroy!
+
+    head :ok
+  end
+
   private
 
   def category_params
