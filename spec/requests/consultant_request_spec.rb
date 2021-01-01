@@ -16,7 +16,7 @@ RSpec.describe "Consultants", type: :request do
 
     it "JSON body response contains expected recipe attributes" do
       json_response = JSON.parse(response.body)
-      expect(json_response[0].keys).to match_array(['id', 'name','rating', 'created_at', 'updated_at'])
+      expect(json_response[0].keys).to match_array(['id', 'name','rating', 'created_at', 'updated_at','total_consultancies'])
     end
   end
 
@@ -25,7 +25,17 @@ RSpec.describe "Consultants", type: :request do
       stub_name = Faker::name
       post "/consultant/", params: {name:stub_name}
       expect(response).to have_http_status(:created)
+      end
+
+    it "total of consultancies start with 0" do
+      stub_name = Faker::name
+      post "/consultant/", params: {name:stub_name}
+
+      json_response = JSON.parse(response.body)
+      expect(json_response["total_consultancies"]).to eq(0)
+      expect(response).to have_http_status(:created)
     end
+
     it "return a consultant created" do
       stub_name = Faker::name
       expect{
