@@ -13,6 +13,13 @@ class LocationController < ApplicationController
     end
   end
 
+  def destroy
+    Location.find(params[:id]).destroy!
+
+    head :ok
+  end
+  
+  private
   def location_params
     params.permit(:cep)
   end
