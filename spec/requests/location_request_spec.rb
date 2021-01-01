@@ -32,4 +32,17 @@ RSpec.describe "Locations", type: :request do
     end
   end
 
+  describe "DELETE /location/:id" do
+    let!(:location) { FactoryBot.create(:location) }
+
+    it "delete a location and return http ok" do
+      expect{
+        delete "/location/#{location.id}"
+      }.to change { Location.count }.from(1).to(0)
+
+      expect(response).to have_http_status(:ok)
+    end
+
+  end
+
 end
