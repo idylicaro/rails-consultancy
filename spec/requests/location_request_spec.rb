@@ -45,4 +45,18 @@ RSpec.describe "Locations", type: :request do
 
   end
 
+  describe "PUT/location/:id" do
+    let!(:location) { FactoryBot.create(:location) }
+
+    it "update a location and return http ok" do
+      cep_for_update = '999999'
+      put "/location/#{location.id}", params: {cep:cep_for_update}
+
+      json_response = JSON.parse(response.body)
+      expect(json_response['cep']).to eq(cep_for_update)
+      expect(Location.count).to eq(1)
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
 end
