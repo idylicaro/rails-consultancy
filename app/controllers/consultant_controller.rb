@@ -7,6 +7,7 @@ class ConsultantController < ApplicationController
     #consultant = Consultant.new(name: params[:name], rating:0)
     consultant = Consultant.new(consultant_params)
     consultant.rating = 0;  #todo: remove for ConsultantRepository
+    consultant.total_consultancies = 0
 
     if consultant.save
       render json: consultant, status: :created
