@@ -18,7 +18,16 @@ class LocationController < ApplicationController
 
     head :ok
   end
-  
+
+  def update
+    location = Location.find(params[:id])
+    if location.update(location_params)
+      render json: location, status: :ok
+    else
+      render json: location.errors, status: :unprocessable_entity
+    end
+  end
+
   private
   def location_params
     params.permit(:cep)
