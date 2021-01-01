@@ -20,4 +20,16 @@ RSpec.describe "Locations", type: :request do
     end
   end
 
+  describe "POST /location" do
+
+    it "return a location created" do
+      stub_cep = Faker::Address.zip_code
+      expect{
+        post "/location/", params: {cep:stub_cep}
+      }.to change { Location.count }.from(0).to(1)
+
+      expect(response).to have_http_status(:created)
+    end
+  end
+
 end
