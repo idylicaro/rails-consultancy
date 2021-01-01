@@ -33,6 +33,6 @@ class ClientController < ApplicationController
   private
 
   def client_params
-    params.permit(:name, :category_id)
+    params.permit(:name, :category_id, :location_id)
   end
 end
