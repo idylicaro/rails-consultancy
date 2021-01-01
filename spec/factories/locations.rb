@@ -9,6 +9,6 @@
 #
 FactoryBot.define do
   factory :location do
-    cep { "MyString" }
+    cep { Faker::Address.zip_code }
   end
 end
