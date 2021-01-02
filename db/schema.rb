@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_232937) do
+ActiveRecord::Schema.define(version: 2021_01_02_002120) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_232937) do
     t.integer "client_id"
     t.integer "consultant_id"
     t.datetime "end_date"
-    t.integer "rating"
+    t.float "rating"
     t.boolean "closed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_232937) do
 
   create_table "consultants", force: :cascade do |t|
     t.string "name"
-    t.integer "rating"
+    t.float "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "total_consultancies"
