@@ -17,10 +17,14 @@ rails s
 ## Routes
 
   ### Consultancy 
-  - GET    /consultancy        #=> index     #=> get all consultancy in a JSON
-  - PUT    /consultancy/:id    #=> close     #=> this route finish a consultancy 
-  - POST   /consultancy        #=> create    #=> create a new consultancy (required: client_id, consultant_id)
-  - DELETE /consultancy/:id    #=> destroy   #=> delete the consultancy
+  - GET    /consultancy
+    > (index) #=> get all consultancy in a JSON
+  - PUT    /consultancy/:id
+    > (close) #=> this route finish a consultancy 
+  - POST   /consultancy
+    > (create) #=> create a new consultancy (required: client_id, consultant_id)
+  - DELETE /consultancy/:id
+    > (destroy) #=> delete the consultancy
 
   ### Client 
   - GET    /client        #=> index     #=> get all clients in a JSON
