@@ -13,5 +13,6 @@ FactoryBot.define do
   factory :consultant do
     name { Faker::Name.name }
     rating { 0 }
+    total_consultancies { 0 }
   end
 end
