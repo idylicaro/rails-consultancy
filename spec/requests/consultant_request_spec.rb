@@ -22,17 +22,12 @@ RSpec.describe "Consultants", type: :request do
 
   describe "POST /consultant" do
     it "return a consultant created" do
-      stub_name = Faker::name
-      expect{
-        post "/consultant/", params: {name:stub_name}
-      }.to change { Consultant.count }.from(0).to(1)
-
+      post "/consultant/", params: {name:Faker::Name.name}
       expect(response).to have_http_status(:created)
     end
-    
+
     it "total of consultancies start with 0" do
-      stub_name = Faker::name
-      post "/consultant/", params: {name:stub_name}
+      post "/consultant/", params: {name:Faker::Name.name}
 
       json_response = JSON.parse(response.body)
       expect(json_response["total_consultancies"]).to eq(0)
@@ -45,9 +40,7 @@ RSpec.describe "Consultants", type: :request do
     let!(:consultant) { FactoryBot.create(:consultant) }
 
     it "delete a client and return http ok" do
-      expect{
-        delete "/consultant/#{consultant.id}"
-      }.to change { Consultant.count }.from(1).to(0)
+      delete "/consultant/#{consultant.id}"
 
       expect(response).to have_http_status(:ok)
     end
@@ -61,10 +54,8 @@ RSpec.describe "Consultants", type: :request do
       name_for_update = 'fakeNameRandom'
       put "/consultant/#{consultant.id}", params: {name:name_for_update}
 
-
       json_response = JSON.parse(response.body)
       expect(json_response['name']).to eq(name_for_update)
-      expect(Consultant.count).to eq(1)
       expect(response).to have_http_status(:ok)
     end
   end
