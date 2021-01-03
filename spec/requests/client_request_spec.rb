@@ -1,57 +1,57 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'faker'
 
-RSpec.describe "Clients", type: :request do
-
-  describe "GET /client" do
+RSpec.describe 'Clients', type: :request do
+  describe 'GET /client' do
     before do
       FactoryBot.create(:client)
       FactoryBot.create(:client)
-      get "/client/"
+      get '/client/'
     end
 
-    it "returns all clients" do
+    it 'returns all clients' do
       expect(response).to have_http_status(:ok)
       expect(JSON.parse(response.body).size).to eq(2)
     end
 
-    it "JSON body response contains expected recipe attributes" do
+    it 'JSON body response contains expected recipe attributes' do
       json_response = JSON.parse(response.body)
-      expect(json_response[0].keys).to match_array(['id', 'name', 'created_at', 'updated_at','category_id','location_id'])
+      expect(json_response[0].keys).to match_array(%w[id name created_at updated_at category_id
+                                                      location_id])
     end
   end
-  describe "POST /client" do
+  describe 'POST /client' do
     let!(:category) { FactoryBot.create(:category) }
     let!(:location) { FactoryBot.create(:location) }
 
-    it "return created client" do
-      post "/client/", params: {name:Faker::Name.name, category_id: category.id, location_id: location.id }
+    it 'return created client' do
+      post '/client/', params: { name: Faker::Name.name, category_id: category.id, location_id: location.id }
       expect(response).to have_http_status(:created)
     end
   end
 
-  describe "DELETE /client/:id" do
+  describe 'DELETE /client/:id' do
     let!(:client) { FactoryBot.create(:client) }
 
-    it "delete a client and return http ok" do
+    it 'delete a client and return http ok' do
       delete "/client/#{client.id}"
       expect(Client.count).to eq(0)
       expect(response).to have_http_status(:ok)
     end
-
   end
 
-  describe "PUT/client/:id" do
+  describe 'PUT/client/:id' do
     let!(:client) { FactoryBot.create(:client) }
 
-    it "update a client and return http ok" do
+    it 'update a client and return http ok' do
       name_for_update = 'fakeNameRandom'
-      put "/client/#{client.id}", params: {name:name_for_update}
+      put "/client/#{client.id}", params: { name: name_for_update }
 
       json_response = JSON.parse(response.body)
       expect(json_response['name']).to eq(name_for_update)
       expect(response).to have_http_status(:ok)
     end
   end
-
 end

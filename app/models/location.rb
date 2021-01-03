@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: locations
@@ -11,5 +13,5 @@ class Location < ApplicationRecord
   has_one :client
 
   validates :cep, presence: true
-  #Todo: create cep validation with Regular expression
+  # TODO: create cep validation with Regular expression
 end

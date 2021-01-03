@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # 'resources :client' mapping (REST) routes
   # GET    /client        #=> index
@@ -10,6 +12,6 @@ Rails.application.routes.draw do
   #
   put '/consultancy/:id', to: 'consultancy#close'
 
-  resources :client, :consultant, :consultancy, :category, :location, only:[:index, :create, :destroy, :update]
+  resources :client, :consultant, :consultancy, :category, :location, only: %i[index create destroy update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

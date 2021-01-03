@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class ConsultantController < ApplicationController
   def index
     render json: Consultant.all
   end
 
   def create
-    #consultant = Consultant.new(name: params[:name], rating:0)
+    # consultant = Consultant.new(name: params[:name], rating:0)
     consultant = Consultant.new(consultant_params)
-    consultant.rating = 0;  #todo: remove for ConsultantRepository
+    consultant.rating = 0; # TODO: remove for ConsultantRepository
     consultant.total_consultancies = 0
 
     if consultant.save
@@ -14,7 +16,6 @@ class ConsultantController < ApplicationController
     else
       render json: consultant.errors, status: :unprocessable_entity
     end
-
   end
 
   def destroy

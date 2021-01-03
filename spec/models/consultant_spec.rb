@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: consultants
@@ -19,5 +21,4 @@ RSpec.describe Consultant, type: :model do
   describe 'association' do
     it { should have_many(:clients).through(:consultancies) }
   end
-
 end
