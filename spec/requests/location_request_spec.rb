@@ -16,7 +16,7 @@ RSpec.describe "Locations", type: :request do
 
     it "JSON body response contains expected recipe attributes" do
       json_response = JSON.parse(response.body)
-      expect(json_response[0].keys).to match_array(['id', 'cep', 'created_at', 'updated_at'])
+      expect(json_response[0].keys).to match_array(%w[id cep created_at updated_at])
     end
   end
 
@@ -36,10 +36,8 @@ RSpec.describe "Locations", type: :request do
     let!(:location) { FactoryBot.create(:location) }
 
     it "delete a location and return http ok" do
-      expect{
-        delete "/location/#{location.id}"
-      }.to change { Location.count }.from(1).to(0)
-
+      delete "/location/#{location.id}"
+      expect(Location.count).to eq(0)
       expect(response).to have_http_status(:ok)
     end
 
@@ -54,7 +52,6 @@ RSpec.describe "Locations", type: :request do
 
       json_response = JSON.parse(response.body)
       expect(json_response['cep']).to eq(cep_for_update)
-      expect(Location.count).to eq(1)
       expect(response).to have_http_status(:ok)
     end
   end
