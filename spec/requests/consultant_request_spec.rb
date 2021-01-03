@@ -21,12 +21,15 @@ RSpec.describe "Consultants", type: :request do
   end
 
   describe "POST /consultant" do
-    it "returns http created" do
+    it "return a consultant created" do
       stub_name = Faker::name
-      post "/consultant/", params: {name:stub_name}
-      expect(response).to have_http_status(:created)
-      end
+      expect{
+        post "/consultant/", params: {name:stub_name}
+      }.to change { Consultant.count }.from(0).to(1)
 
+      expect(response).to have_http_status(:created)
+    end
+    
     it "total of consultancies start with 0" do
       stub_name = Faker::name
       post "/consultant/", params: {name:stub_name}
@@ -36,14 +39,6 @@ RSpec.describe "Consultants", type: :request do
       expect(response).to have_http_status(:created)
     end
 
-    it "return a consultant created" do
-      stub_name = Faker::name
-      expect{
-        post "/consultant/", params: {name:stub_name}
-      }.to change { Consultant.count }.from(0).to(1)
-
-      expect(response).to have_http_status(:created)
-    end
   end
 
   describe "DELETE /consultant/:id" do
