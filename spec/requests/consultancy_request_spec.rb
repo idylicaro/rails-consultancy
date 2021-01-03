@@ -21,7 +21,8 @@ RSpec.describe 'Consultancies', type: :request do
 
     it 'JSON body response contains expected recipe attributes' do
       json_response = JSON.parse(response.body)
-      expect(json_response[0].keys).to match_array(%w[client_id closed consultant_id created_at end_date id rating updated_at])
+      expect(json_response[0].keys).to match_array(%w[client_id closed consultant_id created_at end_date id rating
+                                                      updated_at])
     end
   end
 

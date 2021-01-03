@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LocationController < ApplicationController
   def index
     render json: Location.all
@@ -29,6 +31,7 @@ class LocationController < ApplicationController
   end
 
   private
+
   def location_params
     params.permit(:cep)
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: clients
@@ -20,7 +22,7 @@ RSpec.describe Client, type: :model do
 
   describe 'association' do
     it { should have_many(:consultants).through(:consultancies) }
-    it { should belong_to :category}
-    it { should belong_to :location}
+    it { should belong_to :category }
+    it { should belong_to :location }
   end
 end

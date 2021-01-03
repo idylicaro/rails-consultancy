@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'faker'
 # == Schema Information
 #
@@ -13,7 +15,7 @@ require 'faker'
 FactoryBot.define do
   factory :client do
     name { Faker::Name.name }
-    category { Category.create(name:'test') }
-    location { Location.create(cep:'00000-000') }
+    category { Category.create(name: 'test') }
+    location { Location.create(cep: '00000-000') }
   end
 end

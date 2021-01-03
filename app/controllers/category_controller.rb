@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoryController < ApplicationController
   def index
     render json: Category.all
@@ -11,7 +13,6 @@ class CategoryController < ApplicationController
     else
       render json: category.errors, status: :unprocessable_entity
     end
-
   end
 
   def destroy

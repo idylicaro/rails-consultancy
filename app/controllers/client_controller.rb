@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class ClientController < ApplicationController
   def index
     render json: Client.all
   end
 
   def create
-    #client = Client.new(name: params[:name])
+    # client = Client.new(name: params[:name])
     client = Client.new(client_params)
 
     if client.save
@@ -12,7 +14,6 @@ class ClientController < ApplicationController
     else
       render json: client.errors, status: :unprocessable_entity
     end
-
   end
 
   def destroy
