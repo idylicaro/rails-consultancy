@@ -23,12 +23,8 @@ RSpec.describe "Clients", type: :request do
   describe "POST /client" do
     let!(:category) { FactoryBot.create(:category) }
     let!(:location) { FactoryBot.create(:location) }
-    it "returns http created" do
-      stub_name = Faker::name
-      post "/client/", params: {name:stub_name, category_id: category.id, location_id: location.id  }
-        expect(response).to have_http_status(:created)
-      end
-    it "return a client created" do
+
+    it "return created client" do
       stub_name = Faker::name
       expect{
         post "/client/", params: {name:stub_name, category_id: category.id, location_id: location.id }
