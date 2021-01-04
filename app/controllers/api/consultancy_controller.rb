@@ -30,7 +30,7 @@ class Api::ConsultancyController < ApplicationController
     consultancy.end_date = DateTime.current
     consultancy.closed = true
     consultancy.rating = params[:rating]
-    consultant.rating = calculate_rating(consultant.rating, consultancy.rating, consultant.total_consultancies + 1)
+    consultant.rating = helpers.calculate_rating(consultant.rating, consultancy.rating, consultant.total_consultancies)
 
     consultant.total_consultancies = consultant.total_consultancies + 1
 
@@ -46,9 +46,5 @@ class Api::ConsultancyController < ApplicationController
     end
   end
 
-  private
 
-  def calculate_rating(old_score, new_score, count_consultancies)
-    (old_score + ((new_score - old_score) / count_consultancies)).floor(2)
-  end
 end
