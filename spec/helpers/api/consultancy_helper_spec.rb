@@ -11,5 +11,10 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe Api::ConsultancyHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'calculate_rating' do
+    it 'should return correct rating' do
+      expect(calculate_rating(5.0,4.0,1)).to eq(4.5)
+      expect(calculate_rating(4.5,5.0,2)).to eq(4.66)
+    end
+  end
 end
