@@ -17,51 +17,51 @@ rails s
 ## Routes
 
   ### Consultancy 
-  - GET    /consultancy
+  - GET    /api/consultancy
     > (index) #=> get all consultancy in a JSON
-  - PUT    /consultancy/:id
+  - PUT    /api/consultancy/:id
     > (close) #=> this route finish a consultancy 
-  - POST   /consultancy
+  - POST   /api/consultancy
     > (create) #=> create a new consultancy (required: client_id, consultant_id)
-  - DELETE /consultancy/:id
+  - DELETE /api/consultancy/:id
     > (destroy) #=> delete the consultancy
 
   ### Client 
-  - GET    /client
+  - GET    /api/client
     > (index) #=> get all clients in a JSON
-  - PUT    /client/:id
+  - PUT    /api/client/:id
     > (update) #=> update attributes of client (permited update: name, category_id, location_id)
-  - POST   /client
+  - POST   /api/client
     > (create) #=> create a new client (required: name, category_id, location_id)
-  - DELETE /client/:id
+  - DELETE /api/client/:id
     > (destroy) #=> delete the client
   
   ### Consultant
-  - GET    /consultant
+  - GET    /api/consultant
     > (index) #=> get all consultants in a JSON
-  - PUT    /consultant/:id
+  - PUT    /api/consultant/:id
     > (update) #=> update attributes of consultant (permited update: name)
-  - POST   /consultant
+  - POST   /api/consultant
     > (create) #=> create a new consultant (required: name)
-  - DELETE /consultant/:id
+  - DELETE /api/consultant/:id
     > (destroy) #=> delete the consultant
   
   ### Category
-  - GET    /category
+  - GET    /api/category
     > (index) #=> get all category in a JSON
-  - PUT    /category/:id
+  - PUT    /api/category/:id
     > (update) #=> update attributes of category (permited update: name)
-  - POST   /category
+  - POST   /api/category
     > (create) #=> create a new category (required: name)
-  - DELETE /category/:id
+  - DELETE /api/category/:id
     > (destroy) #=> delete the category
   
   ### Location
-  - GET    /location
+  - GET    /api/location
     > (index) #=> get all location in a JSON
-  - PUT    /location/:id
+  - PUT    /api/location/:id
     > (update) #=> update attributes of location (permited update: cep)
-  - POST   /location
+  - POST   /api/location
     > (create) #=> create a new location (required: cep)
-  - DELETE /location/:id
+  - DELETE /api/location/:id
     > (destroy) #=> delete the location
