@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class ConsultancyController < ApplicationController
+class Api::ConsultancyController < ApplicationController
   def index
     render json: Consultancy.all
   end
