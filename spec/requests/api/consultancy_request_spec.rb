@@ -68,11 +68,6 @@ RSpec.describe "Api::Consultancies", type: :request do
       consultancy = Consultancy.create(client: client, consultant: consultant, rating: 0)
       put "/api/consultancy/#{consultancy.id}", params: { rating: 5 }
       expect(Consultant.find(consultant.id).rating).to eq(5)
-      consultancy = Consultancy.create(client: client, consultant: consultant, rating: 0)
-      put "/api/consultancy/#{consultancy.id}", params: { rating: 4 }
-      expect(Consultant.find(consultant.id).rating).to eq(4.5)
-      put "/api/consultancy/#{consultancy.id}", params: { rating: 3.5 }
-      expect(Consultant.find(consultant.id).rating).to eq(4.16)
       expect(response).to have_http_status(:ok)
     end
   end
