@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   # POST   /client        #=> create
   # DELETE /client/1      #=> destroy
   #
-  put '/consultancy/:id', to: 'consultancy#close'
 
-  resources :client, :consultant, :consultancy, :category, :location, only: %i[index create destroy update]
+  namespace 'api' do
+    put 'consultancy/:id', to: 'consultancy#close'
+
+    resources :client, :consultant, :consultancy, :category, :location, only: %i[index create destroy update]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class LocationController < ApplicationController
+class Api::LocationController < ApplicationController
   def index
     render json: Location.all
   end

@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class ClientController < ApplicationController
+class Api::ClientController < ApplicationController
   def index
     render json: Client.all
   end

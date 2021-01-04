@@ -1,0 +1,2 @@
+module Api::ConsultantHelper
+end
